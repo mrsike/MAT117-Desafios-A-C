@@ -1,0 +1,138 @@
+/* Estilos básicos: sin bibliotecas externas */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #f1f5f9;
+    color: #17253b;
+    line-height: 1.6;
+}
+
+header {
+    background: #17365d;
+    color: white;
+    text-align: center;
+    padding: 26px 16px;
+}
+
+header h1 {
+    margin: 0 0 12px;
+}
+
+header p {
+    margin: 5px 0;
+}
+
+main {
+    max-width: 940px;
+    margin: 20px auto;
+    padding: 0 14px;
+}
+
+section {
+    background: white;
+    padding: 24px;
+    margin-bottom: 22px;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+}
+
+h2 {
+    color: #17365d;
+    margin-top: 0;
+}
+
+h3 {
+    color: #1f4d79;
+    margin-bottom: 6px;
+}
+
+.formula {
+    background: #eaf2fb;
+    border-left: 4px solid #2876af;
+    padding: 12px;
+}
+
+.campos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+}
+
+input {
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    font-size: 16px;
+    border: 1px solid #9aa9ba;
+    border-radius: 6px;
+}
+
+button {
+    background: #1765a3;
+    border: 0;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 12px 18px;
+    margin-top: 15px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #114c7b;
+}
+
+.resultado {
+    background: #f0f7ee;
+    border-left: 4px solid #39844b;
+    padding: 14px;
+    margin-top: 16px;
+}
+
+.error {
+    background: #fff0f0;
+    border-left-color: #ba3434;
+}
+
+.resultado p {
+    margin: 6px 0;
+}
+
+.tabla-contenedor {
+    overflow-x: auto;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 10px;
+}
+
+th, td {
+    border: 1px solid #cbd5e1;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background: #dcecf9;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+footer {
+    background: #17365d;
+    text-align: center;
+    color: white;
+    padding: 18px;
+}

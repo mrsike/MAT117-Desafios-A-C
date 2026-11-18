@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAT-117 | Desafíos A y C</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Matemáticas para resolver problemas reales de La Paz</h1>
+        <p>MAT-117 · Computación Científica · Gestión 2026-II</p>
+        <p>Desafíos seleccionados: A (movilidad) y C (energía solar)</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>Desafío A. ¿Conviene caminar o utilizar transporte?</h2>
+            <p><strong>Problema:</strong> queremos comparar cuánto tardamos en recorrer una distancia
+                caminando o utilizando transporte y cuánto cuesta cada opción.</p>
+            <p><strong>Objetivo:</strong> calcular ambos tiempos, el tiempo ahorrado y el costo para tomar una decisión.</p>
+            <p><strong>Variables y unidades:</strong> distancia <strong>d</strong> (km), velocidad a pie
+                <strong>v<sub>c</sub></strong> (km/h), velocidad del transporte
+                <strong>v<sub>t</sub></strong> (km/h) y pasaje <strong>p</strong> (Bs).</p>
+            <p class="formula"><strong>Modelo:</strong> tiempo = distancia / velocidad;
+                T<sub>c</sub> = 60d / v<sub>c</sub> y T<sub>t</sub> = 60d / v<sub>t</sub> (minutos).</p>
+
+            <form onsubmit="calcularA(); return false;">
+                <div class="campos">
+                    <label>Distancia (km)
+                        <input type="number" id="distancia" value="2" min="0.01" step="any" required>
+                    </label>
+                    <label>Velocidad caminando (km/h)
+                        <input type="number" id="velocidadCaminar" value="4" min="0.01" step="any" required>
+                    </label>
+                    <label>Velocidad del transporte (km/h)
+                        <input type="number" id="velocidadTransporte" value="12" min="0.01" step="any" required>
+                    </label>
+                    <label>Pasaje (Bs)
+                        <input type="number" id="pasaje" value="2.50" min="0" step="any" required>
+                    </label>
+                </div>
+                <button type="submit">Calcular desafío A</button>
+            </form>
+
+            <div id="resultadoA" class="resultado" aria-live="polite"></div>
+            <h3>Cinco pruebas calculadas</h3>
+            <p>Se usa la misma velocidad y el mismo pasaje; la distancia cambia de 1 a 5 veces el valor ingresado.</p>
+            <div class="tabla-contenedor">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Prueba</th>
+                            <th>Distancia (km)</th>
+                            <th>A pie (min)</th>
+                            <th>Transporte (min)</th>
+                            <th>Ahorro (min)</th>
+                            <th>Pasaje (Bs)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaA"></tbody>
+                </table>
+            </div>
+            <h3>Comparación y conjetura</h3>
+            <p><strong>Escenarios:</strong> caminar cuesta 0 Bs de pasaje; el transporte cuesta el pasaje indicado.
+                Si el transporte es más rápido, puede ahorrar tiempo, pero requiere pagar.</p>
+            <p><strong>Conjetura:</strong> para la misma distancia positiva, si la velocidad del transporte
+                es mayor que la velocidad a pie, el transporte tarda menos. Además, si ambas velocidades se mantienen,
+                aumentar la distancia aumenta proporcionalmente ambos tiempos.</p>
+            <p><strong>Justificación:</strong> como T = 60d/v, al dividir la misma distancia positiva entre una
+                velocidad mayor obtenemos un tiempo menor. Las cinco pruebas permiten comprobarlo con números.</p>
+            <h3>Relación con las materias</h3>
+            <p><strong>Cálculo I:</strong> T(d) es una función lineal; cada kilómetro adicional añade 60/v minutos.
+                <strong>Álgebra:</strong> de t = d/v despejamos d = vt.
+                <strong>Geometría I:</strong> representamos la longitud recorrida por una ruta mediante d.
+                <strong>Heurística:</strong> proponemos una conjetura y la comprobamos con cinco distancias.</p>
+            <h3>Conclusión y limitaciones</h3>
+            <p>Para velocidades constantes, el modo más rápido se identifica comparando los tiempos.
+                El transporte puede ahorrar minutos, pero tiene un costo económico.
+                Este modelo es estimado: no considera espera, tráfico, semáforos, pendientes
+                ni que las rutas de ambos medios puedan tener distinta longitud.</p>
+        </section>
+
+        <section>
+            <h2>Desafío C. ¿Dónde colocar un panel solar?</h2>
+            <p><strong>Problema:</strong> comparar la energía teórica producida por un panel solar
+                con distintas desviaciones angulares respecto de una posición ideal.</p>
+            <p><strong>Objetivo:</strong> estimar la energía para tres ángulos, identificar el mejor de ellos
+                y verificar cómo cambia la producción al aumentar el ángulo.</p>
+            <p><strong>Variables y unidades:</strong> potencia <strong>P</strong> (W), horas de sol
+                <strong>h</strong> (h), desviación <strong>θ</strong> (grados) y energía <strong>E</strong> (Wh).</p>
+            <p class="formula"><strong>Modelo didáctico simplificado:</strong> E = P · h · cos(θ),
+                con 0° ≤ θ ≤ 90°. En JavaScript se convierte el ángulo a radianes.</p>
+
+            <form onsubmit="calcularC(); return false;">
+                <div class="campos">
+                    <label>Potencia del panel (W)
+                        <input type="number" id="potencia" value="200" min="0.01" step="any" required>
+                    </label>
+                    <label>Horas de sol (h)
+                        <input type="number" id="horas" value="5" min="0.01" step="any" required>
+                    </label>
+                    <label>Ángulo 1 (grados)
+                        <input type="number" id="angulo1" value="0" min="0" max="90" step="any" required>
+                    </label>
+                    <label>Ángulo 2 (grados)
+                        <input type="number" id="angulo2" value="30" min="0" max="90" step="any" required>
+                    </label>
+                    <label>Ángulo 3 (grados)
+                        <input type="number" id="angulo3" value="60" min="0" max="90" step="any" required>
+                    </label>
+                </div>
+                <button type="submit">Calcular desafío C</button>
+            </form>
+
+            <div id="resultadoC" class="resultado" aria-live="polite"></div>
+            <h3>Cinco pruebas calculadas</h3>
+            <p>Se mantienen P y h, y se evalúan cinco ángulos: 0°, 15°, 30°, 60° y 90°.</p>
+            <div class="tabla-contenedor">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Prueba</th>
+                            <th>Ángulo (grados)</th>
+                            <th>Energía (Wh)</th>
+                            <th>Energía (kWh)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaC"></tbody>
+                </table>
+            </div>
+            <h3>Comparación y conjetura</h3>
+            <p><strong>Escenarios:</strong> para una potencia y horas iguales, una desviación de 0° representa
+                la posición ideal del modelo y una desviación de 60° produce la mitad de la energía ideal.</p>
+            <p><strong>Conjetura:</strong> entre 0° y 90°, cuanto mayor es la desviación del panel
+                respecto de la posición ideal, menor o igual es la energía obtenida.</p>
+            <p><strong>Justificación:</strong> cos(θ) disminuye de 1 a 0 entre 0° y 90°;
+                como P y h son positivos, E = P·h·cos(θ) también disminuye. Se verifica con cinco ángulos.</p>
+            <h3>Relación con las materias</h3>
+            <p><strong>Cálculo I:</strong> E(θ) varía con el ángulo y alcanza su máximo teórico E = P·h en 0°.
+                <strong>Álgebra:</strong> de E = P·h·cos(θ) se despeja h = E/(P·cos(θ)) si P &gt; 0 y θ &lt; 90°.
+                <strong>Geometría I:</strong> el coseno relaciona el ángulo con la proyección sobre la dirección ideal.
+                <strong>Heurística:</strong> formulamos la conjetura y la contrastamos con cinco ángulos.</p>
+            <h3>Conclusión y limitaciones</h3>
+            <p>Según el modelo, la producción máxima ocurre cuando θ = 0°.
+                Al alejar el panel de la posición ideal, la energía estimada disminuye.
+                Es un modelo didáctico: no considera nubosidad, temperatura, sombras,
+                pérdidas eléctricas ni el movimiento del Sol durante el día.</p>
+        </section>
+
+        <section class="entrega">
+            <h2>Comprobación y entrega</h2>
+            <p>Los cálculos se pueden verificar manualmente sustituyendo los datos en cada fórmula.
+                Los resultados y las tablas se actualizan sin recargar la página.
+                Para la entrega, publicar estos tres archivos en GitHub y activar GitHub Pages.
+                Se adjunta también el informe en LaTeX.</p>
+            <p><strong>Integrante :</strong> Dereck Jhoel Saucedo Rojas  &nbsp;</p>
+        </section>
+    </main>
+
+    <footer>MAT-117 · Desafío final integrador · La Paz, Bolivia</footer>
+    <script src="script.js"></script>
+</body>
+</html>
